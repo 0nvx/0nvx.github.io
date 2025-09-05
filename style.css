@@ -1,0 +1,355 @@
+/* Custom CSS Styles for 0nvx Portfolio */
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #e5e7eb;
+    background: linear-gradient(-45deg, #0f172a, #1f2937, #000000, #1f2937);
+    background-size: 400% 400%;
+    animation: gradient-animation 12s ease infinite;
+    min-height: 100vh;
+}
+
+@keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Pixel Text Styling */
+.pixel-text {
+    font-family: 'VT323', monospace;
+    text-shadow: 2px 2px #000;
+    color: #ffffff !important;
+}
+
+/* Glowing Text Effect */
+.glow-text {
+    animation: text-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes text-glow {
+    from {
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    }
+    to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #00ff00, 0 0 40px #00ff00, 0 0 50px #00ff00;
+    }
+}
+
+/* Logo Styling */
+.logo-image {
+    height: 220px;
+    width: auto;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.logo-image:hover {
+    transform: translateY(-10px) scale(1.05);
+    animation: flash-glow 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes flash-glow {
+    0% {
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.3));
+    }
+    100% {
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 35px rgba(255, 255, 255, 0.6));
+    }
+}
+
+/* Hover Effects */
+.hover-effect {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover-effect:hover {
+    transform: translateY(-5px);
+}
+
+/* Skill Tags */
+.skill-tag {
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-tag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.skill-tag:hover::before {
+    left: 100%;
+}
+
+/* Project Cards */
+.project-card {
+    border: 1px solid #374151;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(from 0deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    animation: rotate 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Social Links */
+.social-link {
+    text-align: center;
+    position: relative;
+    transition: transform 0.05s ease;
+    z-index: 1;
+}
+
+.social-link:hover {
+    transform: translateY(-8px) scale(1.05) !important;
+    z-index: 10 !important;
+}
+
+.social-link::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.social-link:hover::before {
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 120px;
+    }
+    
+    .pixel-text {
+        font-size: 2.5rem !important;
+    }
+    
+    .social-link {
+        margin: 0 1rem;
+    }
+    
+    .skill-tag {
+        font-size: 0.75rem;
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+}
+
+/* Scroll Animations */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.animate-on-scroll.slide-left {
+    transform: translateX(-50px);
+}
+
+.animate-on-scroll.slide-left.fade-in {
+    transform: translateX(0);
+}
+
+.animate-on-scroll.slide-right {
+    transform: translateX(50px);
+}
+
+.animate-on-scroll.slide-right.fade-in {
+    transform: translateX(0);
+}
+
+.animate-on-scroll.scale {
+    transform: scale(0.8);
+}
+
+.animate-on-scroll.scale.fade-in {
+    transform: scale(1);
+}
+
+/* Staggered animation for multiple elements */
+.animate-on-scroll.delay-1 {
+    transition-delay: 0.1s;
+}
+
+.animate-on-scroll.delay-2 {
+    transition-delay: 0.2s;
+}
+
+.animate-on-scroll.delay-3 {
+    transition-delay: 0.3s;
+}
+
+.animate-on-scroll.delay-4 {
+    transition-delay: 0.4s;
+}
+
+.animate-on-scroll.delay-5 {
+    transition-delay: 0.5s;
+}
+
+/* Loading Animation (Legacy) */
+.loading {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Matrix Rain Effect (Optional Easter Egg) */
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.1;
+}
+
+/* Animated About Me Header */
+.animated-header {
+    position: relative;
+    background: linear-gradient(45deg, #ef4444, #dc2626, #f87171, #ef4444);
+    background-size: 400% 400%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: gradient-text 3s ease infinite, float-header 4s ease-in-out infinite;
+    text-shadow: none;
+}
+
+.animated-header::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -10px;
+    right: -10px;
+    bottom: -5px;
+    background: linear-gradient(45deg, #ef4444, #dc2626, #f87171, #ef4444);
+    background-size: 400% 400%;
+    border-radius: 10px;
+    z-index: -1;
+    opacity: 0;
+    animation: gradient-border 3s ease infinite;
+}
+
+.animated-header:hover::before {
+    opacity: 0.3;
+}
+
+/* Float Header Animation */
+.float-header {
+    animation: float-header 4s ease-in-out infinite;
+}
+
+@keyframes gradient-text {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes gradient-border {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes float-header {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Pulse Icon Animation */
+.pulse-icon {
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+    0% {
+        color: #ef4444;
+        text-shadow: 0 0 5px #ef4444;
+    }
+    100% {
+        color: #dc2626;
+        text-shadow: 0 0 15px #dc2626, 0 0 20px #dc2626;
+    }
+}
