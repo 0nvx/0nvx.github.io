@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
 
-    hamburger.addEventListener('click', () => {
+    if (hamburger && navLinks) {
+     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('active');
         const spans = hamburger.querySelectorAll('span');
         if (navLinks.classList.contains('active')) {
@@ -16,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             spans[2].style.transform = 'none';
         }
     });
-
+    }
     // Close mobile menu when clicking a link
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
@@ -73,7 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Start typing effect
+    if (typingTextElement) {
     setTimeout(typeEffect, 1000);
+}
 
     // 4. Scroll Reveal Animation
     const revealElements = document.querySelectorAll('.profile-section, .blog-section');
