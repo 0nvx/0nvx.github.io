@@ -1,1 +1,158 @@
-temp
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>0nvx - Cybersecurity Blog</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="particles" id="particles"></div>
+  
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <img src="/logo.png" alt="0nvx Logo" id="nav-logo" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='block';">
+        <span id="text-logo" style="display:none;">0nvx</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#writeups">Writeups</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="https://0nvx.github.io/" target="_blank" rel="noopener noreferrer">Portfolio</a></li>
+      </ul>
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1 class="glitch" data-text="0nvx">0nvx</h1>
+      <h2 class="subtitle">Mohammad Albaik — <span class="typing-text"></span></h2>
+      <p class="cyber-intro">Exploring the depths of systems, reversing malware, and solving real-world labs.</p>
+      <a href="#writeups" class="cyber-button">View Writeups</a>
+    </div>
+    
+    <div class="floating-symbols">
+      <span class="symbol" style="--delay: 1s; --left: 10%;">0x</span>
+      <span class="symbol" style="--delay: 3s; --left: 30%;">{}</span>
+      <span class="symbol" style="--delay: 2s; --left: 70%;">&lt;/&gt;</span>
+      <span class="symbol" style="--delay: 5s; --left: 85%;">sudo</span>
+      <span class="symbol" style="--delay: 4s; --left: 50%;">root</span>
+    </div>
+  </section>
+
+  <div class="container">
+    <section id="about" class="profile-section">
+      <div class="glass-card profile-card">
+        <div class="profile-image-container">
+          <img src="/logo.png" alt="0nvx" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\' viewBox=\'0 0 150 150\'><rect width=\'150\' height=\'150\' fill=\'%231a1a2e\'/><text x=\'50%\' y=\'50%\' font-family=\'monospace\' font-size=\'40\' fill=\'%2300f3ff\' text-anchor=\'middle\' dy=\'.3em\'>0x</text></svg>'">
+          <div class="level-badge">Lv1</div>
+        </div>
+        <div class="profile-info">
+          <h3>0nvx</h3>
+          <h4>Mohammad Albaik</h4>
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-val">12</span>
+              <span class="stat-label">Tags</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">4</span>
+              <span class="stat-label">Categories</span>
+            </div>
+            <div class="stat">
+              <span class="stat-val">4</span>
+              <span class="stat-label">Posts</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="writeups" class="blog-section">
+      <h2 class="section-title">Latest Writeups</h2>
+      <div class="grid">
+        <!-- Post 1 -->
+        <div class="glass-card post-card">
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="date">Oct 24, 2025</span>
+              <div class="tags">
+                <span class="tag">CTF</span>
+                <span class="tag">Web</span>
+              </div>
+            </div>
+            <h3>IEEE Jordan CTF 2025</h3>
+            <p>A deep dive into the challenges from IEEE Jordan CTF 2025, exploring various web exploitation techniques and bypassing filters.</p>
+            <a href="#" class="read-more">Read More &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Post 2 -->
+        <div class="glass-card post-card">
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="date">Sep 15, 2025</span>
+              <div class="tags">
+                <span class="tag">Malware</span>
+                <span class="tag">DFIR</span>
+              </div>
+            </div>
+            <h3>JUST PDF Malware Analysis</h3>
+            <p>Analyzing a malicious PDF document targeting JUST university. Unpacking JavaScript streams and analyzing the shellcode.</p>
+            <a href="#" class="read-more">Read More &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Post 3 -->
+        <div class="glass-card post-card">
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="date">Aug 02, 2025</span>
+              <div class="tags">
+                <span class="tag">Reverse</span>
+                <span class="tag">CTF</span>
+              </div>
+            </div>
+            <h3>Jordan NCSC 2025 Reverse</h3>
+            <p>Step-by-step reverse engineering of the custom crackme binary from the National Cyber Security Center 2025 CTF.</p>
+            <a href="#" class="read-more">Read More &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Post 4 -->
+        <div class="glass-card post-card">
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="date">Jul 10, 2025</span>
+              <div class="tags">
+                <span class="tag">Pwn</span>
+                <span class="tag">Kernel</span>
+              </div>
+            </div>
+            <h3>Linux Kernel Driver Exploit Analysis</h3>
+            <p>Exploiting a vulnerable custom character device driver. Bypassing KASLR, SMEP, and SMAP to achieve local privilege escalation.</p>
+            <a href="#" class="read-more">Read More &rarr;</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer id="portfolio">
+    <div class="footer-content">
+      <p>&copy; 2025 Mohammad Albaik (0nvx). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>
