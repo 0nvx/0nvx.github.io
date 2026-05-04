@@ -1,1 +1,91 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test CTF 2026 - 0nvx</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  .container {
+    flex: 1;
+    max-width: 900px;
+    width: 100%;
+  }
+  .glass-card {
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+   <div class="floating-symbols">
+    <span class="symbol" style="--delay: 1s; --left: 10%;">0x</span>
+    <span class="symbol" style="--delay: 3s; --left: 30%;">{}</span>
+    <span class="symbol" style="--delay: 2s; --left: 70%;"></></span>
+    <span class="symbol" style="--delay: 5s; --left: 85%;">sudo</span>
+    <span class="symbol" style="--delay: 4s; --left: 50%;">root</span>
+  </div>
+  <div class="particles" id="particles"></div>
+
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="../index.html" class="logo">
+        <img src="../logo.jpg" alt="0nvx Logo" id="nav-logo">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="../index.html#home">Home</a></li>
+        <li><a href="../index.html#writeups">Writeups</a></li>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="https://0nvx.github.io/" target="_blank">Portfolio</a></li>
+      </ul>
+
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container" style="margin-top:120px;">
+
+    <a href="../index.html#writeups" class="read-more">
+      ← Back to Writeups
+    </a>
+
+    <div class="glass-card">
+      <div class="post-meta">
+        <span class="date">Feb 23, 2026</span>
+        <div class="tags">
+          <span class="tag">CTF</span>
+          <span class="tag">DFIR</span>
+        </div>
+      </div>
+
+      <h1>Test CTF 2026</h1>
+
+      <p>
+        meowwwwwwwwwwwwwwwwwwwwwwww
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <div class="footer-content">
+      <p>© 2026 Mohammad Albaik (0nvx). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="../script.js"></script>
+</body>
+</html>
