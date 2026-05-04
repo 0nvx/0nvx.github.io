@@ -1,111 +1,285 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>0nvx - Writesup Blog</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>0nvx — CTF Player & Security Researcher</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="main.js" defer></script>
 </head>
 <body>
-  <div class="particles" id="particles"></div>
-  
-  <nav id="navbar">
-    <div class="nav-container">
-      <a href="#" class="logo">
-        <img src="logo.jpg" alt="0nvx Logo" id="nav-logo" onerror="this.style.display='none'; document.getElementById('text-logo').style.display='block';">
-        <span id="text-logo" style="display:none;">0nvx</span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#writeups">Writeups</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="https://0nvx.github.io/" target="_blank" rel="noopener noreferrer">Portfolio</a></li>
-      </ul>
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </nav>
 
-  <section id="home" class="hero">
-    <div class="hero-content">
-      <h1 class="glitch" data-text="0nvx">0nvx</h1>
-      <h2 class="subtitle">Mohammad Albaik — <span class="typing-text"></span></h2>
-      <p class="cyber-intro">In a world of constant threats, I stay constant in defense</p>
-      <a href="#writeups" class="cyber-button">View Writeups</a>
+<!-- Floating symbols -->
+<div class="floating-symbols" aria-hidden="true">
+  <span class="symbol" style="--left:6%;--delay:0s">0x</span>
+  <span class="symbol" style="--left:18%;--delay:3s">{}</span>
+  <span class="symbol" style="--left:34%;--delay:7s">&lt;/&gt;</span>
+  <span class="symbol" style="--left:52%;--delay:1s">sudo</span>
+  <span class="symbol" style="--left:68%;--delay:5s">root</span>
+  <span class="symbol" style="--left:82%;--delay:9s">$_</span>
+  <span class="symbol" style="--left:92%;--delay:4s">0xff</span>
+</div>
+
+<!-- Navbar -->
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="navbar-logo">
+      <img src="lion-logo.jpg" alt="0nvx Logo" class="logo-img" onerror="this.style.background='hsl(270,70%,65%)';this.removeAttribute('src')" />
+      <span class="logo-name">0nvx</span>
+    </a>
+
+    <nav class="nav-desktop" style="display:flex;align-items:center;gap:2rem;">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="articles.html">Articles</a></li>
+        <li><a href="writeups.html">Writeups</a></li>
+      </ul>
+      <button class="theme-btn" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </nav>
+
+    <div style="display:flex;align-items:center;gap:0.5rem;" class="md-hide-desktop">
+      <button class="theme-btn" aria-label="Toggle theme">
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Open menu" aria-expanded="false">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+      </button>
     </div>
-    
-    <div class="floating-symbols">
-      <span class="symbol" style="--delay: 1s; --left: 10%;">0x</span>
-      <span class="symbol" style="--delay: 3s; --left: 30%;">{}</span>
-      <span class="symbol" style="--delay: 2s; --left: 70%;">&lt;/&gt;</span>
-      <span class="symbol" style="--delay: 5s; --left: 85%;">sudo</span>
-      <span class="symbol" style="--delay: 4s; --left: 50%;">root</span>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="index.html" class="active">Home</a>
+    <a href="articles.html">Articles</a>
+    <a href="writeups.html">Writeups</a>
+  </nav>
+</header>
+
+<div class="page-wrapper">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+      <img src="lion-logo.jpg" alt="0nvx Profile" class="hero-avatar" onerror="this.style.background='hsl(270,70%,65%)';this.removeAttribute('src')" />
+
+      <h1 class="hero-title">0nvx</h1>
+      <p class="hero-subtitle">CTF Player &amp; Security Researcher</p>
+      <p class="hero-bio">
+        Breaking systems to understand them. Specializing in reverse engineering, binary exploitation, and web security.
+        Documenting the journey from bits to bugs.
+      </p>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-number" data-count="5">0</span>
+          <span class="stat-label">Writeups Published</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-count="4">0</span>
+          <span class="stat-label">Articles Published</span>
+        </div>
+      </div>
+
+      <!-- CTA buttons -->
+      <div class="hero-buttons">
+        <a href="articles.html" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          View Articles
+        </a>
+        <a href="writeups.html" class="btn btn-outline">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+          CTF Writeups
+        </a>
+        <button class="btn btn-ghost" onclick="scrollToContact()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Get in Touch
+        </button>
+      </div>
     </div>
   </section>
 
-  <div class="container">
-    <section id="about" class="profile-section">
-      <div class="glass-card profile-card">
-        <div class="profile-image-container">
-          <img src="logo.jpg" alt="0nvx" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'150\' height=\'150\' viewBox=\'0 0 150 150\'><rect width=\'150\' height=\'150\' fill=\'%231a1a2e\'/><text x=\'50%\' y=\'50%\' font-family=\'monospace\' font-size=\'40\' fill=\'%2300f3ff\' text-anchor=\'middle\' dy=\'.3em\'>0x</text></svg>'">
-          <div class="level-badge">Lv.Max</div>
-        </div>
-        <div class="profile-info">
-          <h3>0nvx</h3>
-          <h4>Mohammad Albaik</h4>
-          <div class="stats">
-            <div class="stat">
-              <span class="stat-val">2</span>
-              <span class="stat-label">Tags</span>
-            </div>
-            <div class="stat">
-              <span class="stat-val">1</span>
-              <span class="stat-label">Categories</span>
-            </div>
-            <div class="stat">
-              <span class="stat-val">1</span>
-              <span class="stat-label">Posts</span>
-            </div>
+  <!-- Featured Content -->
+  <section class="section section-muted">
+    <div class="container">
+      <div class="featured-grid">
+
+        <!-- Latest Articles -->
+        <div>
+          <div class="section-header">
+            <h3 class="section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              Latest Articles
+            </h3>
+            <a href="articles.html" class="section-link">View all
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
           </div>
+          <div class="grid-2" style="gap:1.25rem;">
+
+            <div class="card animate-in">
+              <a href="article-anatomy-of-a-heap-overflow.html" class="card-link">
+                <div class="card-header">
+                  <div class="article-tags">
+                    <span class="badge badge-secondary">Binary</span>
+                    <span class="badge badge-secondary">Pwn</span>
+                    <span class="badge badge-secondary">Exploit Development</span>
+                  </div>
+                  <div class="card-title" style="margin-top:0.5rem;">Anatomy of a Heap Overflow: Exploiting malloc()</div>
+                </div>
+                <div class="card-content">
+                  <p class="card-desc card-desc-3">A deep dive into how memory allocation works in libc and how to leverage use-after-free vulnerabilities to gain arbitrary code execution.</p>
+                </div>
+                <div class="card-footer">
+                  <span class="card-footer-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Oct 12, 2023
+                  </span>
+                  <span class="card-footer-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    12 min read
+                  </span>
+                </div>
+              </a>
+            </div>
+
+            <div class="card animate-in">
+              <a href="article-web-cache-deception.html" class="card-link">
+                <div class="card-header">
+                  <div class="article-tags">
+                    <span class="badge badge-secondary">Web</span>
+                    <span class="badge badge-secondary">Bug Bounty</span>
+                    <span class="badge badge-secondary">Architecture</span>
+                  </div>
+                  <div class="card-title" style="margin-top:0.5rem;">Weaponizing Web Cache Deception</div>
+                </div>
+                <div class="card-content">
+                  <p class="card-desc card-desc-3">Exploring real-world scenarios where misconfigured CDN rules allow attackers to steal sensitive user information by manipulating file extensions.</p>
+                </div>
+                <div class="card-footer">
+                  <span class="card-footer-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Sep 05, 2023
+                  </span>
+                  <span class="card-footer-text">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    8 min read
+                  </span>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Latest Writeups -->
+        <div>
+          <div class="section-header">
+            <h3 class="section-title">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Latest Writeups
+            </h3>
+            <a href="writeups.html" class="section-link">View all
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+          <div class="grid-2" style="gap:1.25rem;">
+
+            <div class="card animate-in" data-category="Pwn">
+              <a href="writeup-defcon-2023-baby-pwn.html" class="card-link">
+                <div class="card-header">
+                  <div class="card-badge-row">
+                    <span class="badge badge-primary">DEF CON Quals 2023</span>
+                    <span class="badge badge-medium">Medium</span>
+                  </div>
+                  <div class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Baby Pwn
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="card-desc">A classic stack buffer overflow with a twist: ASLR is enabled, but there's an information leak in the greeting function.</p>
+                  <div class="tools-row">
+                    <span class="tools-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Tools:</span>
+                    <span class="tool-tag">pwntools</span>
+                    <span class="tool-tag">GDB</span>
+                    <span class="tool-tag">Ghidra</span>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <span>Read Solution</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </a>
+            </div>
+
+            <div class="card animate-in" data-category="Web">
+              <a href="writeup-hackthebox-cyber-apocalypse-web.html" class="card-link">
+                <div class="card-header">
+                  <div class="card-badge-row">
+                    <span class="badge badge-primary">Cyber Apocalypse 2023</span>
+                    <span class="badge badge-hard">Hard</span>
+                  </div>
+                  <div class="card-title">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    Intergalactic Tracker
+                  </div>
+                </div>
+                <div class="card-content">
+                  <p class="card-desc">A complex web challenge involving Server-Side Template Injection (SSTI) that leads to Remote Code Execution (RCE) in a restricted environment.</p>
+                  <div class="tools-row">
+                    <span class="tools-label"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg> Tools:</span>
+                    <span class="tool-tag">Burp Suite</span>
+                    <span class="tool-tag">Python</span>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <span>Read Solution</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact">
+    <div class="container-md" style="text-align:center;">
+      <h2 style="font-size:1.75rem;font-weight:700;margin-bottom:0.5rem;">Get in Touch</h2>
+      <p style="color:var(--muted-foreground);font-size:0.875rem;margin-bottom:2.5rem;">Reach out for collaboration, research discussions, or just to say hello.</p>
+      <div style="display:flex;justify-content:center;">
+        <div class="contact-box">
+          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            </span>
+            <span class="contact-label">GitHub</span>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </span>
+            <span class="contact-label">LinkedIn</span>
+          </a>
+          <a href="https://discord.com/" target="_blank" rel="noopener noreferrer" class="contact-link">
+            <span class="contact-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="28" height="28" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.033.053a19.904 19.904 0 0 0 5.993 3.03.077.077 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+            </span>
+            <span class="contact-label">Discord</span>
+          </a>
         </div>
       </div>
-    </section>
-
-    <section id="writeups" class="blog-section">
-      <h2 class="section-title">Latest Writeups</h2>
-      <div class="grid">
-        <!-- Post 1 -->
-        <div class="glass-card post-card">
-          <div class="post-content">
-            <div class="post-meta">
-              <span class="date">Feb 23, 2026</span>
-              <div class="tags">
-                <span class="tag">CTF</span>
-                <span class="tag">DFIR</span>
-              </div>
-            </div>
-            <h3>Test CTF 2026</h3>
-            <p> test test test </p>
-            <a href="writeups/test.html" class="read-more">Read More &rarr;</a>
-          </div>
-        </div>
-
-         </div> <!-- END grid -->
-      </section> <!-- END writeups section -->
-    </div> <!-- END container -->
-
-  <footer id="portfolio">
-    <div class="footer-content">
-      <p>&copy; 2026 Mohammad Albaik #believe </p>
     </div>
-  </footer>
+  </section>
 
-  <script src="script.js"></script>
+</div>
 </body>
 </html>
