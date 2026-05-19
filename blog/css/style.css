@@ -977,3 +977,8 @@ html.dark .contact-box { background: rgba(20,20,40,0.60); }
   color: var(--fg-muted);
   margin-bottom: 2rem;
 }
+@media (max-width: 768px) {
+  body {
+    background-image: none;
+  }
+}
