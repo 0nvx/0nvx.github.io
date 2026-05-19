@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Writeup — 0nvx</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+<div class="floating-symbols" aria-hidden="true"></div>
+
+<div id="page">
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/images/lion-logo.jpg" alt="0nvx logo" class="nav-logo-img" />
+          <span class="nav-logo-text">0nvx</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html"    class="nav-link">Home</a>
+          <a href="articles.html" class="nav-link">Articles</a>
+          <a href="writeups.html" class="nav-link active">Writeups</a>
+          <button class="btn-icon btn-theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+        </nav>
+        <div class="nav-mobile-controls">
+          <button class="btn-icon btn-theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+          <button class="btn-hamburger" id="btn-hamburger" aria-label="Open menu">
+            <svg id="icon-menu-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+            <svg id="icon-menu-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu">
+      <a href="index.html"    class="mobile-nav-link">Home</a>
+      <a href="articles.html" class="mobile-nav-link">Articles</a>
+      <a href="writeups.html" class="mobile-nav-link active">Writeups</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===========================================================
+         WRITEUP DETAIL PAGE
+         Controls: layout — css/style.css (.detail-page, .writeup-info-grid, .flag-box)
+                   content  — loaded from js/data.js via ?id= URL param
+         =========================================================== -->
+    <div class="detail-page">
+      <div class="container container-md">
+
+        <!-- Back link -->
+        <a href="writeups.html" class="back-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          Back to Writeups
+        </a>
+
+        <!-- Writeup content injected here by inline script -->
+        <div id="writeup-content">
+          <p style="color:var(--fg-muted)">Loading…</p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/main.js"></script>
+<script>
+  /* Read ?id= from URL and render matching writeup */
+  const params  = new URLSearchParams(window.location.search);
+  const id      = params.get("id");
+  const writeup = WRITEUPS.find(w => w.id === id);
+
+  const container = document.getElementById("writeup-content");
+
+  if (!writeup) {
+    container.innerHTML = `
+      <div class="not-found">
+        <div class="not-found-code">404</div>
+        <p class="not-found-msg">Writeup not found.</p>
+        <a href="writeups.html" class="btn btn-primary" style="margin-top:1rem">← All Writeups</a>
+      </div>`;
+  } else {
+    document.title = writeup.challenge + " — 0nvx";
+
+    /* Difficulty badge CSS class */
+    function diffClass(d) {
+      return { Easy:'badge-easy', Medium:'badge-medium', Hard:'badge-hard' }[d] || 'badge-outline';
+    }
+
+    /* Tools tags */
+    const tools = writeup.tools
+      .map(t => `<span class="tool-tag" style="font-size:0.8rem;padding:0.25rem 0.625rem">${t}</span>`)
+      .join('');
+
+    container.innerHTML = `
+      <div class="fade-in-up visible">
+
+        <!-- CTF + difficulty badges -->
+        <div class="flex gap-2" style="margin-bottom:1.25rem;flex-wrap:wrap">
+          <span class="badge badge-primary" style="font-size:0.875rem;padding:0.3rem 0.75rem">${writeup.ctf}</span>
+          <span class="badge ${diffClass(writeup.difficulty)}" style="font-size:0.875rem;padding:0.3rem 0.75rem">${writeup.difficulty}</span>
+          <span class="badge badge-secondary" style="font-size:0.875rem;padding:0.3rem 0.75rem">${writeup.category}</span>
+        </div>
+
+        <h1 class="detail-title">${writeup.challenge}</h1>
+
+        <p class="detail-meta" style="margin-bottom:1.5rem;color:var(--fg-muted)">${writeup.description}</p>
+
+        <!-- Info grid: CTF / Category / Difficulty -->
+        <div class="writeup-info-grid">
+          <div class="info-card">
+            <div class="info-card-label">Competition</div>
+            <div class="info-card-value">${writeup.ctf}</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Category</div>
+            <div class="info-card-value">${writeup.category}</div>
+          </div>
+          <div class="info-card">
+            <div class="info-card-label">Difficulty</div>
+            <div class="info-card-value">${writeup.difficulty}</div>
+          </div>
+        </div>
+
+        <!-- Tools used -->
+        <div style="margin-bottom:1.5rem">
+          <div style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--fg-muted);margin-bottom:0.5rem">Tools Used</div>
+          <div class="tools-row" style="margin-top:0">${tools}</div>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Flag box -->
+        <div class="flag-box">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+            <line x1="4" y1="22" x2="4" y2="15"/>
+          </svg>
+          ${writeup.flag}
+        </div>
+
+        <!-- Solution prose -->
+        <div class="prose">${writeup.solution}</div>
+
+      </div>`;
+  }
+</script>
+
+</body>
+</html>

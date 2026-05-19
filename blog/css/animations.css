@@ -1,0 +1,126 @@
+/* ============================================================
+   animations.css — All keyframes, transitions, and motion effects
+   ============================================================ */
+
+/* ============================================================
+   FLOATING CODE SYMBOLS BACKGROUND
+   Controls: the rising 0x {} </> sudo root $_ 0xff symbols
+   ============================================================ */
+.floating-symbols {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.floating-symbols .symbol {
+  position: absolute;
+  bottom: -3rem;
+  font-family: Menlo, monospace;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: rgba(var(--primary-rgb), 0.28);
+  animation: float-up 11s ease-in-out infinite;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Each symbol's position and delay is set inline in HTML */
+
+@keyframes float-up {
+  0%   { transform: translateY(0)     scale(1);    opacity: 0; }
+  8%   { opacity: 1; }
+  50%  { transform: translateY(-45vh) scale(1.04); opacity: 1; }
+  92%  { opacity: 1; }
+  100% { transform: translateY(-95vh) scale(1);    opacity: 0; }
+}
+
+/* ============================================================
+   PAGE TRANSITION
+   Controls: the fade-in + slight upward slide on page load
+   ============================================================ */
+.page-enter {
+  animation: page-fade-in 0.25s ease forwards;
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   SCROLL-TRIGGERED FADE-IN
+   Controls: elements that animate when they enter the viewport
+   Applied via JS IntersectionObserver → adds .visible class
+   ============================================================ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children (delay set via --delay CSS var in JS) */
+.fade-in-up[style*="--delay"] {
+  transition-delay: var(--delay, 0s);
+}
+
+/* ============================================================
+   HERO ANIMATIONS
+   Controls: initial load-in motion for hero elements
+   ============================================================ */
+.hero-avatar-wrap {
+  animation: hero-avatar-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes hero-avatar-in {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.hero-text-1 { animation: hero-slide-in 0.5s ease 0.1s both; }
+.hero-text-2 { animation: hero-slide-in 0.5s ease 0.2s both; }
+.hero-text-3 { animation: hero-slide-in 0.5s ease 0.3s both; }
+.stats-row   { animation: hero-slide-in 0.5s ease 0.35s both; }
+.cta-row     { animation: hero-slide-in 0.5s ease 0.4s both; }
+
+@keyframes hero-slide-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   CARD HOVER LIFT
+   Controls: subtle upward shift on card hover
+   ============================================================ */
+.card {
+  transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+.card:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   MOBILE MENU SLIDE
+   Controls: hamburger menu open/close animation
+   ============================================================ */
+.mobile-menu {
+  transition: max-height 0.3s cubic-bezier(0.4,0,0.2,1),
+              opacity 0.25s ease;
+}
+
+/* ============================================================
+   CONTACT BOX PULSE (subtle on load)
+   ============================================================ */
+@keyframes contact-fade {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.contact-box-wrap.visible .contact-box {
+  animation: contact-fade 0.5s ease forwards;
+}

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Article — 0nvx</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+</head>
+<body>
+
+<div class="floating-symbols" aria-hidden="true"></div>
+
+<div id="page">
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo">
+          <img src="assets/images/lion-logo.jpg" alt="0nvx logo" class="nav-logo-img" />
+          <span class="nav-logo-text">0nvx</span>
+        </a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="index.html"    class="nav-link">Home</a>
+          <a href="articles.html" class="nav-link active">Articles</a>
+          <a href="writeups.html" class="nav-link">Writeups</a>
+          <button class="btn-icon btn-theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+        </nav>
+        <div class="nav-mobile-controls">
+          <button class="btn-icon btn-theme-toggle" aria-label="Toggle theme">
+            <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          </button>
+          <button class="btn-hamburger" id="btn-hamburger" aria-label="Open menu">
+            <svg id="icon-menu-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
+            <svg id="icon-menu-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu">
+      <a href="index.html"    class="mobile-nav-link">Home</a>
+      <a href="articles.html" class="mobile-nav-link active">Articles</a>
+      <a href="writeups.html" class="mobile-nav-link">Writeups</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ===========================================================
+         ARTICLE DETAIL PAGE
+         Controls: layout — css/style.css (.detail-page, .prose)
+                   content  — loaded from js/data.js via ?id= URL param
+         =========================================================== -->
+    <div class="detail-page">
+      <div class="container container-md">
+
+        <!-- Back link -->
+        <a href="articles.html" class="back-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m15 18-6-6 6-6"/>
+          </svg>
+          Back to Articles
+        </a>
+
+        <!-- Article content injected here by inline script -->
+        <div id="article-content">
+          <p style="color:var(--fg-muted)">Loading…</p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/main.js"></script>
+<script>
+  /* Read ?id= from URL and render the matching article */
+  const params = new URLSearchParams(window.location.search);
+  const id     = params.get("id");
+  const article = ARTICLES.find(a => a.id === id);
+
+  const container = document.getElementById("article-content");
+
+  if (!article) {
+    container.innerHTML = `
+      <div class="not-found">
+        <div class="not-found-code">404</div>
+        <p class="not-found-msg">Article not found.</p>
+        <a href="articles.html" class="btn btn-primary" style="margin-top:1rem">← All Articles</a>
+      </div>`;
+  } else {
+    /* Update page title */
+    document.title = article.title + " — 0nvx";
+
+    /* Build tag badges */
+    const tags = article.tags
+      .map(t => `<span class="badge badge-secondary">${t}</span>`)
+      .join('');
+
+    /* Render article */
+    container.innerHTML = `
+      <div class="fade-in-up visible">
+        <div class="tags-row">${tags}</div>
+
+        <h1 class="detail-title">${article.title}</h1>
+
+        <div class="detail-meta">
+          <span class="detail-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            ${article.date}
+          </span>
+          <span class="detail-meta-item">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            ${article.readTime}
+          </span>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Article body — stored as HTML in data.js -->
+        <div class="prose">${article.content}</div>
+      </div>`;
+  }
+</script>
+
+</body>
+</html>
