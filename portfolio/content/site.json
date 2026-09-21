@@ -1,7 +1,7 @@
 {
   "hero": {
     "eyebrow": "Mohammad Albaik",
-    "headline": "Defense is a\ndiscipline, not\na reaction.",
+    "title": "Defense is a\ndiscipline, not\na reaction.",
     "subtitle": "Cybersecurity specialist — threat hunting & DFIR",
     "bio": "In a world of constant threats, I stay constant in defense. This is where I publish CTF writeups, research notes, and field-tested defensive techniques.",
     "buttons": {
