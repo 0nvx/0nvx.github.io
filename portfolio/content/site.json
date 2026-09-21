@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "eyebrow": "Mohammad Albaik",
+    "headline": "Defense is a\ndiscipline, not\na reaction.",
+    "subtitle": "Cybersecurity specialist — threat hunting & DFIR",
+    "bio": "In a world of constant threats, I stay constant in defense. This is where I publish CTF writeups, research notes, and field-tested defensive techniques.",
+    "buttons": {
+      "articles": "View articles",
+      "writeups": "CTF writeups",
+      "contact": "Get in touch"
+    }
+  },
+  "stats": {
+    "writeupsLabel": "Writeups published",
+    "articlesLabel": "Articles published"
+  },
+  "about": {
+    "eyebrow": "About",
+    "title": "I got into this because I wanted to know how things actually break.",
+    "bio": "I'm Mohammad — a cybersecurity specialist focused on the defensive side: reading logs until they tell the truth, hunting for the thing that shouldn't be on the network, and pulling systems apart to understand them from the inside out. CTFs are where I sharpen that instinct, and writing it all down is how I make sure it sticks.",
+    "skillTags": [
+      "Threat Hunting",
+      "DFIR",
+      "Network Security"
+    ],
+    "quickFacts": [
+      {
+        "label": "Based in",
+        "value": "Amman, Jordan"
+      },
+      {
+        "label": "Focus",
+        "value": "Blue team & DFIR"
+      },
+      {
+        "label": "Currently",
+        "value": "Chasing CTF flags & writing up cases"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get in touch",
+    "intro": "Feel happy to say hello :)",
+    "links": {
+      "github": {
+        "label": "GitHub",
+        "url": "https://github.com"
+      },
+      "linkedin": {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com"
+      },
+      "discord": {
+        "label": "Discord",
+        "url": "#"
+      },
+      "cyberdefenders": {
+        "label": "CyberDefenders",
+        "url": "https://cyberdefenders.org/"
+      }
+    }
+  },
+  "footer": {
+    "copyright": "Onvx © 2026",
+    "tagline": "In a world of constant threats, I stay constant in defense"
+  }
+}
